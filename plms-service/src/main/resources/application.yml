@@ -1,0 +1,76 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  compression:
+    enabled: true
+
+spring:
+  application:
+    name: plms-service
+
+  # ---------------- 数据源（MySQL 8） ----------------
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/plms?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: "123456"
+    hikari:
+      minimum-idle: 4
+      maximum-pool-size: 16
+      connection-timeout: 20000
+      pool-name: PlmsHikariPool
+
+  # ---------------- 建表脚本（幂等，CREATE TABLE IF NOT EXISTS） ----------------
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      continue-on-error: false
+      encoding: UTF-8
+
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      fail-on-empty-beans: false
+      # 关闭时间戳输出：LocalDateTime -> 2026-10-01T16:41:00，LocalDate -> 2026-10-01
+      # 与前端约定一致（前端对时间字段做 slice(0,10) / new Date(iso) 处理）
+      write-dates-as-timestamps: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: input          # ID 由业务层生成（字符串），不使用雪花算法
+      table-underline: true
+
+# ---------------- 业务配置 ----------------
+plms:
+  jwt:
+    secret: plms-mint-glass-secret-key-please-change-in-production-2026
+    expire-hours: 12
+    header: Authorization
+    prefix: "Bearer "
+  # Nacos 服务发现（README 指定）。默认关闭，单机可直接运行；
+  # 启动 Nacos 后用 --spring.profiles.active=nacos 打开。
+  nacos:
+    enabled: false
+    server-addr: 127.0.0.1:8848
+    namespace: ""
+    group: DEFAULT_GROUP
+    cluster-name: DEFAULT
+
+logging:
+  level:
+    root: INFO
+    com.plms: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Mint PLM · 软件生命周期管理系统，覆盖产品、项目、测试、知识、效能、协作、自动化与智能协同" />
+    <title>Mint PLM · 软件生命周期管理系统</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2323d3a9'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='800' text-anchor='middle' fill='%2304352c' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./vendor/element-plus.css" />
+    <link rel="stylesheet" href="./src/styles/theme.css" />
+    <link rel="stylesheet" href="./src/styles/element.css" />
+
+    <!--
+      依赖通过 import map 指向本地 vendor 目录中的 ESM 产物：
+      · 浏览器直接运行（无需构建）
+      · 使用 Vite 时，裸模块说明符由 node_modules 解析，本 importmap 不生效也不冲突
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "./vendor/vue.js",
+          "vue-router": "./vendor/vue-router.js",
+          "pinia": "./vendor/pinia.js",
+          "axios": "./vendor/axios.js",
+          "element-plus": "./vendor/element-plus.js",
+          "element-plus/es/locale/lang/zh-cn": "./vendor/element-plus-zh-cn.js",
+          "vue-demi": "./vendor/vue-demi.js",
+          "@vue/devtools-api": "./vendor/devtools-api/index.js",
+          "echarts": "./vendor/echarts.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="boot-screen">
+        <div class="boot-logo">M</div>
+        <div class="boot-text">正在加载 Mint PLM…</div>
+      </div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

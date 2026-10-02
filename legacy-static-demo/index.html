@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mint PLM · 软件生命周期管理系统，覆盖产品、项目、测试、知识、效能、协作、自动化与智能协同" />
+  <title>Mint PLM · 软件生命周期管理系统</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2323d3a9'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='800' text-anchor='middle' fill='%2304352c' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <div style="display:grid;place-items:center;height:100vh;width:100%;color:#37605a;font-family:system-ui,-apple-system,'PingFang SC',sans-serif">
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#3fe3bd,#12b894);margin:0 auto 16px;display:grid;place-items:center;color:#04352c;font-weight:800;font-size:22px;box-shadow:0 12px 30px -12px rgba(20,184,148,.9)">M</div>
+        <div style="font-weight:700">正在加载 Mint PLM…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据层 -->
+  <script src="./assets/js/store.js"></script>
+  <!-- 通用组件 -->
+  <script src="./assets/js/components.js"></script>
+  <!-- 业务视图 -->
+  <script src="./assets/js/views/dashboard.js"></script>
+  <script src="./assets/js/views/product.js"></script>
+  <script src="./assets/js/views/project.js"></script>
+  <script src="./assets/js/views/test.js"></script>
+  <script src="./assets/js/views/knowledge.js"></script>
+  <script src="./assets/js/views/metrics.js"></script>
+  <script src="./assets/js/views/collab.js"></script>
+  <script src="./assets/js/views/automation.js"></script>
+  <script src="./assets/js/views/ai.js"></script>
+  <script src="./assets/js/views/settings.js"></script>
+  <!-- 应用外壳 / 路由 -->
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
